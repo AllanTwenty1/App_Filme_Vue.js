@@ -1,18 +1,94 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="feature-card">
+      <router-link to="/movie/tt0409591">
+        <img src="https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg" alt="Naruto" class="featured-img" />
+        <div class="detail">
+          <h3>Naruto</h3>
+          <p>Naruto Uzumaki, a mischievous adolescent ninja, struggles as he searches for recognition and dreams of becoming the Hokage, the village's leader and strongest ninja.</p>
+        </div>
+      </router-link>
+    </div>
+
+    <form @submit.prevent="" class="search-box">
+      <input type="text" placeholder="Oque você está procurando?"/>
+      <input type="submit" value="Search">
+    </form>
+
+    <div class="movies-list">MOVIES</div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+ 
 }
 </script>
+
+<style lang="scss">
+.home{
+  .feature-card{ 
+    position: relative;
+
+    .featured-img{
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+
+      position: relative;
+      z-index: 0;
+    }
+    .detail{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.6);
+
+      h3{
+        color: #fff;
+        margin-bottom: 16px;  
+      }
+      p{
+        color: #fff;
+      }
+    }
+  }
+  .search-box{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+
+    input {
+      display: flex;
+      appearance: none;
+      border: none;
+      outline: none;
+      background: none;
+
+      &[type="text"] {
+        width: 100%;
+        color: #fff;
+        background-color: #496583;
+        font-size: 20px;
+        padding: 10px 16px;
+        border-radius: 8px; 
+        border-bottom: 15px;
+        transition: 0.4s;
+
+      &::placeholder {
+        color: #f3f3f3;
+      }
+      &::focus {
+        box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+      }
+      }
+    }
+  }
+}
+
+</style>
